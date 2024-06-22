@@ -1,0 +1,35 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "blackout";
+  src: url(./fonts/blackout_two_am-webfont.woff) format(woff);
+  src: url(./fonts/blackout_two_am-webfont.woff2) format(woff2);
+  src: url(./fonts/blackout_two_am-webfont.ttf) format(truetype);
+}
+
+.main-c {
+  width: 700px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  font-family: "blackout";
+}
+
+h2 {
+  font-size: 1.2rem;
+  text-align: center;
+  font-family: "blackout";
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
