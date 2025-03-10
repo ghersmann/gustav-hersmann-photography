@@ -6,23 +6,27 @@
     <main class="main-c">
       <div v-for="image in images" :key="image">
         <div class="thumbnail-box">
-          <!--  <img
-            class="thumbnail"
-            :src="`${imageBaseUrl}/250px/${image}`"
-            alt="Gallery Image"
-            loading="lazy"
-          /> -->
-
           <img
             :src="`${imageBaseUrl}/250px/${image}`"
             :data-full="`${imageBaseUrl}/800px/${image}`"
             alt="Gallery Image"
             class="thumbnail"
             @load="swapImage"
+            @click="openLightbox(image)"
           />
         </div>
       </div>
     </main>
+
+    <!-- Lightbox Modal -->
+    <div v-if="lightboxActive" class="lightbox" @click="closeLightbox">
+      <img
+        :src="`${imageBaseUrl}/2500px/${currentImage}`"
+        alt="Full Size Image"
+        class="lightbox-img"
+      />
+    </div>
+
     <footer>
       <h2><a href="mailto:gustav@gustavhersmman.com">gustav@gustavhersmann.com</a></h2>
     </footer>
@@ -84,12 +88,22 @@ export default {
         '2017-svartvit-film-1017-rollei-rpx100-raw.jpg',
         '2017-svartvit-film-1025-rollei-rpx100-raw.jpg',
         '2017-svartvit-film-1560-rollei-rpx100-raw.jpg'
-      ]
+      ],
+      lightboxActive: false,
+      currentImage: null
     }
   },
   methods: {
     swapImage(event) {
       event.target.src = event.target.dataset.full
+    },
+    openLightbox(image) {
+      this.currentImage = image
+      this.lightboxActive = true
+    },
+    closeLightbox() {
+      this.lightboxActive = false
+      this.currentImage = null
     }
   }
 }
