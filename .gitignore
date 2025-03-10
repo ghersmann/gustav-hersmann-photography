@@ -29,3 +29,9 @@ coverage
 
 *.tsbuildinfo
 old/
+
+bilder/
+
+.env
+.env.development
+.env.production
