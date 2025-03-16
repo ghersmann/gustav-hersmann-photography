@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export const useImageStore = defineStore('images', {
   state: () => ({
     imageBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
-    images: [
+    imagesLess: [
       '2012-svartvit-film-3475-ilford-delta-100-raw.jpg',
       '2012-svartvit-film-3483-ilford-delta-100-raw.jpg',
       '2012-svartvit-film-3501-ilford-delta-100-raw.jpg',
