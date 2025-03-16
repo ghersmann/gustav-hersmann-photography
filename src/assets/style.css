@@ -11,16 +11,56 @@
   src: url(./fonts/blackout_two_am-webfont.ttf) format(truetype);
 }
 
-.main-c {
-  width: 700px;
-  margin: 0 auto;
+body {
+  margin: 0;
+  height: 100%; /* Full height */
   display: flex;
+  flex-direction: column;
+}
+
+/* Sticky header */
+header {
+  background-color: blanchedalmond;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100; /* Ensure it's on top */
+  padding-left: 1rem;
+  text-align: left;
+}
+
+main {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 6rem; /* Adjust to match or exceed footer height */
+}
+
+/* Sticky footer */
+footer {
+  background-color: blanchedalmond;
+  width: 100%;
+  position: fixed;
+  top: auto;
+  bottom: 0;
+  z-index: 100;
+  padding: 1rem;
+  text-align: left;
+}
+
+/* Main container (center images horizontally) */
+.gallery-track {
+  flex: 1; /* This allows the main content to take the remaining height */
+  overflow-x: auto; /* Enables horizontal scrolling */
+  display: flex;
+  flex-wrap: nowrap; /* Prevents wrapping, makes images scroll in one row */
+  justify-content: flex-start;
+  padding: 0.5rem;
 }
 
 .thumbnail-box {
-  width: 250px;
-  height: 250px;
-  margin: 10px;
+  width: 20rem;
+  height: 20rem;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,17 +71,48 @@
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
+  padding: 0.2rem;
+  margin: 0;
+}
+
+.article-p {
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.gallery-article:not(:first-child) {
+  margin-top: 3rem;
+}
+
+/* Lightbox Box */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
 }
 
 h1 {
-  font-size: 3rem;
-  text-align: center;
+  font-size: 2.5rem;
   font-family: 'blackout';
 }
 
 h2 {
-  font-size: 1.2rem;
-  text-align: center;
+  font-size: 1rem;
   font-family: 'blackout';
 }
 
@@ -50,21 +121,13 @@ a {
   color: black;
 }
 
-/* Lightbox Styles */
-.lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
+/* Media query for larger screens */
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 3rem;
+  }
 
-.lightbox-img {
-  max-width: 90%;
-  max-height: 90%;
+  h2 {
+    font-size: 1.2rem;
+  }
 }
