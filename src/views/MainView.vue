@@ -9,44 +9,15 @@
     </header>
 
     <main>
-      <article class="gallery-article">
-        <p class="article-p">My Life is Less Exciting than Yours.</p>
-        <div class="gallery-track">
-          <div v-for="image in state.imagesLess" :key="image">
-            <div class="thumbnail-box">
-              <img
-                :src="`${state.imageBaseUrl}/250px/${image}`"
-                :data-full="`${state.imageBaseUrl}/800px/${image}`"
-                alt="Gallery Image"
-                class="thumbnail"
-                @load="swapImage"
-                @click="openLightbox(image)"
-              />
-            </div>
-          </div>
-        </div>
-      </article>
-      <article class="gallery-article">
-        <p class="article-p">Stone cold land.</p>
-        <div class="gallery-track">
-          <div v-for="image in state.imagesLess" :key="image">
-            <div class="thumbnail-box">
-              <img
-                :src="`${state.imageBaseUrl}/250px/${image}`"
-                :data-full="`${state.imageBaseUrl}/800px/${image}`"
-                alt="Gallery Image"
-                class="thumbnail"
-                @load="swapImage"
-                @click="openLightbox(image)"
-              />
-            </div>
-          </div>
-        </div>
-      </article>
-      <article class="gallery-article">
-        <p class="article-p">Grease.</p>
-        <div class="gallery-track">
-          <div v-for="image in state.imagesLess" :key="image">
+      <article v-for="gallery in state.galleries" :key="gallery.id" class="gallery-article">
+        <!-- Clickable Title -->
+        <p class="article-p title" @click="toggleGallery(gallery.id)">
+          {{ gallery.title }}
+        </p>
+
+        <!-- Conditionally Render Gallery Content -->
+        <div v-if="visibleArticles[gallery.id]" class="gallery-track">
+          <div v-for="image in gallery.images" :key="image">
             <div class="thumbnail-box">
               <img
                 :src="`${state.imageBaseUrl}/250px/${image}`"
@@ -87,8 +58,15 @@ export default {
     return {
       state: useImageStore(),
       lightboxActive: false,
-      currentImage: null
+      currentImage: null,
+      visibleArticles: {} // Tracks visibility of each gallery by ID
     }
+  },
+  created() {
+    // Initialize visibility based on "render" property from the store
+    this.state.galleries.forEach((gallery) => {
+      this.visibleArticles[gallery.id] = gallery.render // If render is true, it's visible by default
+    })
   },
   methods: {
     swapImage(event) {
@@ -101,6 +79,9 @@ export default {
     closeLightbox() {
       this.lightboxActive = false
       this.currentImage = null
+    },
+    toggleGallery(galleryId) {
+      this.visibleArticles[galleryId] = !this.visibleArticles[galleryId]
     }
   }
 }
