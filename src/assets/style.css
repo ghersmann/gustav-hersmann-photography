@@ -58,8 +58,8 @@ footer {
 }
 
 .thumbnail-box {
-  width: 20rem;
-  height: 20rem;
+  width: 18rem;
+  height: 18rem;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -107,7 +107,7 @@ footer {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-family: 'blackout';
 }
 
@@ -124,10 +124,10 @@ a {
 /* Media query for larger screens */
 @media screen and (min-width: 800px) {
   h1 {
-    font-size: 3rem;
+    font-size: 1.5rem;
   }
 
   h2 {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
   }
 }
