@@ -11,6 +11,17 @@
   src: url(./fonts/blackout_two_am-webfont.ttf) format(truetype);
 }
 
+@font-face {
+  font-family: nohemi-regular;
+  src: url(./fonts/nohemi-regular.ttf) format(truetype);
+  src: url(./fonts/nohemi-regular.woff) format(woff);
+}
+@font-face {
+  font-family: nohemi-thin;
+  src: url(./fonts/nohemi-thin.ttf) format(truetype);
+  src: url(./fonts/nohemi-thin.woff) format(woff);
+}
+
 body {
   margin: 0;
   height: 100%;
@@ -20,7 +31,7 @@ body {
 
 /* Sticky header */
 header {
-  background-color: blanchedalmond;
+  background-color: black;
   width: 100%;
   position: sticky;
   top: 0;
@@ -37,7 +48,7 @@ main {
 
 /* Sticky footer */
 footer {
-  background-color: blanchedalmond;
+  background-color: black;
   width: 100%;
   position: fixed;
   top: auto;
@@ -76,7 +87,7 @@ footer {
 }
 
 .article-p {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'nohemi-thin';
   margin: 0.5rem;
   width: 95vw;
   cursor: pointer;
@@ -125,17 +136,19 @@ footer {
 
 h1 {
   font-size: 2rem;
-  font-family: 'blackout';
+  font-family: 'nohemi-regular';
+  color: white;
 }
 
 h2 {
   font-size: 1rem;
-  font-family: 'blackout';
+  font-family: 'nohemi-regular';
+  color: white;
 }
 
 a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 /* Media query for larger screens */
