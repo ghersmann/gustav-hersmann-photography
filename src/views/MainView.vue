@@ -11,12 +11,12 @@
     <main>
       <article v-for="gallery in state.galleries" :key="gallery.id" class="gallery-article">
         <!-- Clickable Title -->
-        <p class="article-p title" @click="toggleGallery(gallery.id)">
+        <p class="article-p" @click="toggleGallery(gallery.id)">
           {{ gallery.title }}
         </p>
 
         <!-- Conditionally Render Gallery Content -->
-        <div v-if="visibleArticles[gallery.id]" class="gallery-track">
+        <div v-if="visibleArticles[gallery.id]" :id="'gallery-' + gallery.id" class="gallery-track">
           <div v-for="image in gallery.images" :key="image">
             <div class="thumbnail-box">
               <img
@@ -59,13 +59,12 @@ export default {
       state: useImageStore(),
       lightboxActive: false,
       currentImage: null,
-      visibleArticles: {} // Tracks visibility of each gallery by ID
+      visibleArticles: {}
     }
   },
   created() {
-    // Initialize visibility based on "render" property from the store
     this.state.galleries.forEach((gallery) => {
-      this.visibleArticles[gallery.id] = gallery.render // If render is true, it's visible by default
+      this.visibleArticles[gallery.id] = gallery.render
     })
   },
   methods: {
@@ -80,8 +79,22 @@ export default {
       this.lightboxActive = false
       this.currentImage = null
     },
+
     toggleGallery(galleryId) {
       this.visibleArticles[galleryId] = !this.visibleArticles[galleryId]
+
+      if (this.visibleArticles[galleryId]) {
+        this.$nextTick(() => {
+          const galleryElement = document.getElementById(`gallery-${galleryId}`)
+          if (galleryElement) {
+            const headerHeight = document.querySelector('header').offsetHeight
+            window.scrollTo({
+              top: galleryElement.offsetTop - headerHeight,
+              behavior: 'smooth'
+            })
+          }
+        })
+      }
     }
   }
 }
