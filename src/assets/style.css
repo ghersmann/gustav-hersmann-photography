@@ -5,13 +5,6 @@
 }
 
 @font-face {
-  font-family: 'blackout';
-  src: url(./fonts/blackout_two_am-webfont.woff) format(woff);
-  src: url(./fonts/blackout_two_am-webfont.woff2) format(woff2);
-  src: url(./fonts/blackout_two_am-webfont.ttf) format(truetype);
-}
-
-@font-face {
   font-family: nohemi-regular;
   src: url(./fonts/nohemi-regular.ttf) format(truetype);
   src: url(./fonts/nohemi-regular.woff) format(woff);
@@ -36,12 +29,11 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  padding-left: 0.5rem;
+  padding-left: 1rem;
   text-align: left;
 }
 
 main {
-  /* flex: 1; */
   overflow-y: auto;
   padding-bottom: 6rem;
 }
@@ -54,8 +46,27 @@ footer {
   top: auto;
   bottom: 0;
   z-index: 100;
-  padding: 0.5rem;
+  padding: 1rem;
   text-align: left;
+}
+
+h1 {
+  font-size: 1.7rem;
+  font-family: 'nohemi-regular';
+  color: white;
+}
+
+h2 {
+  font-size: 1rem;
+  font-family: 'nohemi-regular';
+  color: white;
+}
+
+a {
+  font-family: 'nohemi-thin';
+  text-decoration: none;
+  color: white;
+  font-size: 0.8rem;
 }
 
 .gallery-track {
@@ -123,32 +134,66 @@ footer {
   height: 100vh;
   background: rgba(0, 0, 0, 0.9);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+  align-items: center; /* Centers vertically */
+  justify-content: center; /* Centers horizontally */
   z-index: 1000;
 }
 
+/* Lightbox Content (wraps image + close button) */
+.lightbox-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 90vw; /* Ensures it never exceeds viewport width */
+  max-height: 90vh; /* Ensures it never exceeds viewport height */
+  overflow: visible;
+}
+
+/* Lightbox Image */
 .lightbox-img {
-  max-width: 90%;
-  max-height: 90%;
+  width: auto;
+  height: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain; /* Prevents cropping or overflow */
+  z-index: 1001;
 }
 
-h1 {
-  font-size: 2rem;
-  font-family: 'nohemi-regular';
-  color: white;
-}
-
-h2 {
+/* Lightbox Close Button */
+.lightbox-close {
+  position: absolute;
+  top: -2.5rem;
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1rem;
-  font-family: 'nohemi-regular';
-  color: white;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  z-index: 1003;
+  line-height: 1; /* Ensures text aligns well */
 }
 
-a {
-  text-decoration: none;
-  color: white;
+/* Center "×" properly */
+.lightbox-close::after {
+  content: '×';
+  font-family: Arial, sans-serif;
+  font-weight: 100;
+  font-size: 1.2rem; /* Slightly smaller */
+  display: flex; /* Allows proper centering */
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Ensures it takes the full width of parent */
+  height: 100%;
+  line-height: 1; /* Prevents extra spacing */
 }
 
 /* Media query for larger screens */
