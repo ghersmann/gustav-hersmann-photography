@@ -35,11 +35,14 @@
 
     <!-- Lightbox Modal -->
     <div v-if="lightboxActive" class="lightbox" @click="closeLightbox">
-      <img
-        :src="`${state.imageBaseUrl}/2500px/${currentImage}`"
-        alt="Full Size Image"
-        class="lightbox-img"
-      />
+      <div class="lightbox-content">
+        <div class="lightbox-close" @click="closeLightbox"></div>
+        <img
+          :src="`${state.imageBaseUrl}/2500px/${currentImage}`"
+          alt="Full Size Image"
+          class="lightbox-img"
+        />
+      </div>
     </div>
 
     <footer>
