@@ -35,3 +35,4 @@ bilder/
 .env
 .env.development
 .env.production
+.vercel
