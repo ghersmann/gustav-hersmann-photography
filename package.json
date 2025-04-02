@@ -12,7 +12,10 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.0",
+    "pg": "^8.14.1",
     "pinia": "^2.1.7",
+    "psql": "^0.0.1",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
   },

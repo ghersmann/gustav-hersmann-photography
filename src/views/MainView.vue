@@ -9,13 +9,11 @@
     </header>
 
     <main>
-      <article v-for="gallery in state.galleries" :key="gallery.id" class="gallery-article">
-        <!-- Clickable Title -->
+      <!-- <article v-for="gallery in state.galleries" :key="gallery.id" class="gallery-article">
         <p class="article-p" @click="toggleGallery(gallery.id)">
           {{ gallery.title }}
         </p>
 
-        <!-- Conditionally Render Gallery Content -->
         <div v-if="visibleArticles[gallery.id]" :id="'gallery-' + gallery.id" class="gallery-track">
           <div v-for="image in gallery.images" :key="image">
             <div class="thumbnail-box">
@@ -30,7 +28,8 @@
             </div>
           </div>
         </div>
-      </article>
+      </article> -->
+      <GalleryTrack />
     </main>
 
     <!-- Lightbox Modal -->
@@ -55,6 +54,7 @@
 
 <script>
 import { useImageStore } from '@/stores/ImageStore.js'
+import GalleryTrack from '@/components/GalleryTrack.vue'
 
 export default {
   data() {
@@ -64,6 +64,9 @@ export default {
       currentImage: null,
       visibleArticles: {}
     }
+  },
+  components: {
+    GalleryTrack
   },
   created() {
     this.state.galleries.forEach((gallery) => {
