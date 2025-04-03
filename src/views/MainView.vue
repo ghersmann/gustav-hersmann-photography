@@ -9,40 +9,14 @@
     </header>
 
     <main>
-      <!-- <article v-for="gallery in state.galleries" :key="gallery.id" class="gallery-article">
-        <p class="article-p" @click="toggleGallery(gallery.id)">
-          {{ gallery.title }}
-        </p>
-
-        <div v-if="visibleArticles[gallery.id]" :id="'gallery-' + gallery.id" class="gallery-track">
-          <div v-for="image in gallery.images" :key="image">
-            <div class="thumbnail-box">
-              <img
-                :src="`${state.imageBaseUrl}/250px/${image}`"
-                :data-full="`${state.imageBaseUrl}/800px/${image}`"
-                alt="Gallery Image"
-                class="thumbnail"
-                @load="swapImage"
-                @click="openLightbox(image)"
-              />
-            </div>
-          </div>
-        </div>
-      </article> -->
-      <GalleryTrack />
+      <GalleryTrack
+        v-for="(images, category, title) in state.categorizedImages"
+        :key="category"
+        :category="category"
+        :images="images"
+        :title="title"
+      />
     </main>
-
-    <!-- Lightbox Modal -->
-    <div v-if="lightboxActive" class="lightbox" @click="closeLightbox">
-      <div class="lightbox-content">
-        <div class="lightbox-close" @click="closeLightbox"></div>
-        <img
-          :src="`${state.imageBaseUrl}/2500px/${currentImage}`"
-          alt="Full Size Image"
-          class="lightbox-img"
-        />
-      </div>
-    </div>
 
     <footer>
       <h2>
@@ -60,23 +34,18 @@ export default {
   data() {
     return {
       state: useImageStore(),
-      lightboxActive: false,
-      currentImage: null,
+      //lightboxActive: false,
+      //currentImage: null,
       visibleArticles: {}
     }
   },
   components: {
     GalleryTrack
   },
-  created() {
-    this.state.galleries.forEach((gallery) => {
-      this.visibleArticles[gallery.id] = gallery.render
-    })
+  mounted() {
+    this.state.fetchImages()
   },
   methods: {
-    swapImage(event) {
-      event.target.src = event.target.dataset.full
-    },
     openLightbox(image) {
       this.currentImage = image
       this.lightboxActive = true
@@ -84,9 +53,9 @@ export default {
     closeLightbox() {
       this.lightboxActive = false
       this.currentImage = null
-    },
+    }
 
-    toggleGallery(galleryId) {
+    /* toggleGallery(galleryId) {
       this.visibleArticles[galleryId] = !this.visibleArticles[galleryId]
 
       if (this.visibleArticles[galleryId]) {
@@ -101,7 +70,13 @@ export default {
           }
         })
       }
-    }
+    } */
   }
 }
 </script>
+
+<!-- <style scoped>
+h2 {
+  color: black;
+}
+</style> -->
