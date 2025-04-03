@@ -32,7 +32,10 @@ old/
 
 bilder/
 
+api/test-db.js
+
 .env
 .env.development
 .env.production
 .vercel
+.env*.local
