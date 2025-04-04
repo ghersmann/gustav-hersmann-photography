@@ -10,6 +10,7 @@
             :data-full="`${state.imageBaseUrl}/800px/${img.file}`"
             :alt="img.alt_text"
             class="thumbnail"
+            @click="openLightbox(img)"
           />
         </div>
       </div>
@@ -17,36 +18,43 @@
   </article>
 
   <!-- Lightbox Modal -->
-  <!-- 
-   @click="openLightbox(img)"  
-  <article>
-    <div v-if="lightboxActive" class="lightbox" @click="closeLightbox">
-      <div class="lightbox-content">
-        <div class="lightbox-close" @click="closeLightbox"></div>
-        <img
-          :src="`${state.imageBaseUrl}/2500px/${currentImage}`"
-          alt="Full Size Image"
-          class="lightbox-img"
-        />
-      </div>
+  <article v-if="lightboxActive" class="lightbox" @click="closeLightbox">
+    <div class="lightbox-content">
+      <div class="lightbox-close" @click="closeLightbox"></div>
+      <img
+        :src="`${state.imageBaseUrl}/2500px/${currentImage.file}`"
+        alt="Full Size Image"
+        class="lightbox-img"
+      />
     </div>
-  </article> -->
+  </article>
 </template>
 
-<script setup>
-import { defineProps } from 'vue'
+<script>
 import { useImageStore } from '@/stores/ImageStore'
 
-const state = useImageStore()
-console.log(state.imageBaseUrl)
-
-// eslint-disable-next-line no-unused-vars
-const props = defineProps({
-  category: String, // Category name
-  images: Array // Filtered images for this category
-})
-
-/* const openLightbox = (image) => {
-  console.log('Opening lightbox for', image)
-} */
+export default {
+  name: 'GalleryTrack',
+  props: {
+    category: String,
+    images: Array
+  },
+  data() {
+    return {
+      lightboxActive: false,
+      currentImage: null,
+      state: useImageStore()
+    }
+  },
+  methods: {
+    openLightbox(image) {
+      this.currentImage = image
+      this.lightboxActive = true
+    },
+    closeLightbox() {
+      this.lightboxActive = false
+      this.currentImage = null
+    }
+  }
+}
 </script>

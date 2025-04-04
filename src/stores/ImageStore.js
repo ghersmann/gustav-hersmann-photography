@@ -21,7 +21,7 @@ export const useImageStore = defineStore('images', {
     async fetchImages() {
       try {
         const response = await fetch('/api/gallery')
-        this.images = await response.json() // Store all images
+        this.images = await response.json()
       } catch (error) {
         console.error('Error fetching images:', error)
       }
