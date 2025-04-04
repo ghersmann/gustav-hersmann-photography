@@ -6,8 +6,8 @@
       <div v-for="img in images" :key="img.id">
         <div class="thumbnail-box">
           <img
-            :src="`${imageBaseUrl}/250px/${img.file}`"
-            :data-full="`${imageBaseUrl}/800px/${img.file}`"
+            :src="`${state.imageBaseUrl}/250px/${img.file}`"
+            :data-full="`${state.imageBaseUrl}/800px/${img.file}`"
             :alt="img.alt_text"
             class="thumbnail"
           />
@@ -35,14 +35,16 @@
 
 <script setup>
 import { defineProps } from 'vue'
+import { useImageStore } from '@/stores/ImageStore'
+
+const state = useImageStore()
+console.log(state.imageBaseUrl)
 
 // eslint-disable-next-line no-unused-vars
 const props = defineProps({
   category: String, // Category name
   images: Array // Filtered images for this category
 })
-
-const imageBaseUrl = import.meta.env.VITE_IMAGE_BASE_URL || 'https://nofotmc.com/images/'
 
 /* const openLightbox = (image) => {
   console.log('Opening lightbox for', image)

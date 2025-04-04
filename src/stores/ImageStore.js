@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 
 export const useImageStore = defineStore('images', {
   state: () => ({
-    imageBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL || 'https://nofotmc.com/images/',
+    imageBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
     images: [] // Stores all images from the database
   }),
   getters: {
