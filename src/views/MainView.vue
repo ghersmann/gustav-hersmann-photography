@@ -9,12 +9,7 @@
     </header>
 
     <main>
-      <GalleryTrack
-        v-for="(images, category) in state.categorizedImages"
-        :key="category"
-        :category="category"
-        :images="images"
-      />
+      <GalleryTrack />
     </main>
 
     <footer>
@@ -26,21 +21,11 @@
 </template>
 
 <script>
-import { useImageStore } from '@/stores/ImageStore.js'
 import GalleryTrack from '@/components/GalleryTrack.vue'
 
 export default {
-  data() {
-    return {
-      state: useImageStore(),
-      visibleArticles: {}
-    }
-  },
   components: {
     GalleryTrack
-  },
-  mounted() {
-    this.state.fetchImages()
   }
 }
 </script>
