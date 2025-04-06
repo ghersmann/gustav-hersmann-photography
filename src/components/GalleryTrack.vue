@@ -16,7 +16,8 @@
           </div>
         </div>
       </div>
-      <p v-else class="article-p">Open Gallery</p>
+      <p v-else-if="gallery.visible === false" class="article-p">Open Gallery</p>
+      <p v-else class="article-p">Gallery Loading...</p>
     </article>
 
     <!-- Lightbox Modal -->
