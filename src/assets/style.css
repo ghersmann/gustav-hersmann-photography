@@ -83,7 +83,7 @@ a {
 }
 
 /* Open Gallery Overlay Button*/
-/* .article-p::after {
+.article-p::after {
   content: 'Open Gallery';
   position: absolute;
   top: 0;
@@ -98,7 +98,7 @@ a {
 
 .article-p:hover::after {
   opacity: 1;
-} */
+}
 
 /* Gallery track and images */
 .gallery-track {
