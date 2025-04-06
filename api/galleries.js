@@ -5,7 +5,10 @@ const sql = neon(process.env.VITE_DATABASE_URL)
 
 export default async function handler(req, res) {
   try {
-    const galleries = await sql`SELECT * FROM galleries`
+    const galleries = await sql`
+    SELECT * FROM galleries
+    ORDER BY sorting_order ASC
+    `
     res.status(200).json(galleries)
   } catch (error) {
     console.error('Database error:', error)
