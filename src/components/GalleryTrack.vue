@@ -16,7 +16,7 @@
           </div>
         </div>
       </div>
-      <p v-else class="article-p">Loading images...</p>
+      <p v-else class="article-p">Open Gallery</p>
     </article>
 
     <!-- Lightbox Modal -->

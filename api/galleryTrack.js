@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     const images = await sql`
       SELECT images.* FROM images
       JOIN galleries ON images.gallery_id = galleries.id
-      WHERE galleries.slug = ${gallerySlug}
+      WHERE galleries.slug = ${gallerySlug} AND galleries.visible = true
     `
     res.status(200).json(images)
   } catch (error) {
