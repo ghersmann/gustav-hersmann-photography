@@ -51,7 +51,6 @@ h1 {
 @media screen and (min-width: 600px) and (max-width: 1025px) and (orientation: portrait) {
   header {
     height: clamp(5rem, 13vmin, 10rem);
-    background-color: darkolivegreen;
   }
 
   .title-logo,
@@ -68,7 +67,6 @@ h1 {
 @media screen and (max-height: 440px) and (orientation: landscape) {
   header {
     height: clamp(4rem, 16vmin, 5rem);
-    background-color: darkslategrey;
   }
 
   .title-logo,
