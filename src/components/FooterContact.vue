@@ -41,14 +41,14 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: clamp(1rem, 4vmin, 1.5rem);
+  width: clamp(1rem, 4vmin, 1.4rem);
   aspect-ratio: 1/1;
   cursor: pointer;
-  margin: clamp(0.4rem, 2vmin, 0.6rem);
+  margin: clamp(0.4rem, 2vmin, 0.5rem);
 }
 
 .horizontal-line {
-  height: clamp(1px, 2vmin, 2px);
+  height: clamp(1px, 0.3vmin, 2px);
   width: 100%;
   background-color: white;
   border-radius: 1px;
@@ -65,6 +65,6 @@ footer {
   text-decoration: none;
   color: white;
   font-size: clamp(0.6rem, 2vmin, 0.8rem);
-  margin-left: clamp(0.4rem, 2vmin, 0.6rem);
+  margin-left: clamp(0.4rem, 1.7vmin, 0.5rem);
 }
 </style>
