@@ -12,8 +12,7 @@
         <div v-for="img in state.images[gallery.slug]" :key="img.id">
           <div class="thumbnail-box">
             <img
-              :src="`${state.imageBaseUrl}/250px/${img.file}`"
-              :data-src="`${state.imageBaseUrl}/800px/${img.file}`"
+              :src="`${state.imageBaseUrl}/800px/${img.file}`"
               :alt="img.alt_text"
               class="thumbnail"
               loading="lazy"

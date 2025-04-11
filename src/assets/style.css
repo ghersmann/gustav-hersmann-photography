@@ -25,42 +25,14 @@ body {
 }
 
 main {
+  flex: 1;
   overflow-y: auto;
-  padding-bottom: 6rem;
-}
-
-/* Sticky header */
-header {
-  background-color: black;
-  width: 100%;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  padding-left: 1rem;
-  text-align: left;
-}
-
-/* Sticky footer */
-footer {
-  background-color: black;
-  width: 100%;
-  position: fixed;
-  top: auto;
-  bottom: 0;
-  z-index: 100;
-  padding: 1rem;
-  text-align: left;
+  /* padding-bottom: 6rem; */
 }
 
 /* Fonts */
 h1 {
-  font-size: 1.7rem;
-  font-family: 'nohemi-regular';
-  color: white;
-}
-
-h2 {
-  font-size: 1rem;
+  font-size: clamp(1rem, 3.4vh, 2rem);
   font-family: 'nohemi-regular';
   color: white;
 }
@@ -107,17 +79,19 @@ a {
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  padding: 0.5rem;
 }
 
 .thumbnail-box {
-  width: 18rem;
-  height: 18rem;
+  height: 60vh;
+  max-width: 80vw;
+  aspect-ratio: 1 / 1;
+  /* border: 2px solid red; */
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  /* background-color: yellow; */
 }
 
 .thumbnail {
@@ -198,15 +172,4 @@ a {
   width: 100%;
   height: 100%;
   line-height: 1;
-}
-
-/* Media query for larger screens */
-@media screen and (min-width: 800px) {
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  h2 {
-    font-size: 0.9rem;
-  }
 }
