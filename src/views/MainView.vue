@@ -1,31 +1,23 @@
 <template>
   <body>
-    <header>
-      <h1>
-        Gustav<br />
-        Hersmann<br />
-        Photographer
-      </h1>
-    </header>
-
+    <HeaderMenu />
     <main>
       <GalleryTrack />
     </main>
-
-    <footer>
-      <h2>
-        <a href="mailto:gustav@gustavhersmman.com">gustav@gustavhersmann.com</a>
-      </h2>
-    </footer>
+    <FooterContact />
   </body>
 </template>
 
 <script>
+import FooterContact from '@/components/FooterContact.vue'
 import GalleryTrack from '@/components/GalleryTrack.vue'
+import HeaderMenu from '@/components/HeaderMenu.vue'
 
 export default {
   components: {
-    GalleryTrack
+    GalleryTrack,
+    HeaderMenu,
+    FooterContact
   }
 }
 </script>
