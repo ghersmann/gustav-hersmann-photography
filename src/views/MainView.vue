@@ -1,11 +1,9 @@
 <template>
-  <body>
-    <HeaderMenu />
-    <main>
-      <GalleryTrack />
-    </main>
-    <FooterContact />
-  </body>
+  <HeaderMenu />
+  <main>
+    <GalleryTrack />
+  </main>
+  <FooterContact />
 </template>
 
 <script>
