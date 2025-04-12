@@ -26,14 +26,14 @@ header {
 }
 
 .title-logo {
-  margin: clamp(0.6rem, 1.5vw, 1.2rem);
-  padding-right: clamp(0.6rem, 1.5vw, 1.2rem);
+  margin: clamp(0.8rem, 1.5vw, 1.2rem);
+  padding-right: clamp(0.8rem, 1.5vw, 1.2rem);
   border-right: 1px solid white;
 }
 
 h1 {
-  font-size: clamp(0.6rem, 2vmin, 1.9rem);
-  font-family: 'nohemi-regular';
+  font-size: clamp(1.3rem, 2vmin, 1.9rem);
+  font-family: 'nohemi-thin';
   color: white;
 }
 </style>
