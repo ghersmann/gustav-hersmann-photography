@@ -88,6 +88,6 @@ export default {
 .gallery-article {
   margin: 0.5rem;
   padding: 0.5rem;
-  background-color: beige;
+  background-color: rgb(230, 230, 230);
 }
 </style>

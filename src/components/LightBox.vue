@@ -66,8 +66,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
-  font-weight: bold;
+  /*   font-size: 1rem;
+  font-weight: bold; */
   color: black;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
@@ -77,10 +77,10 @@ export default {
 
 /* Center "×" properly */
 .lightbox-close::after {
-  content: '×';
-  font-family: Arial, sans-serif;
+  content: 'x';
+  font-family: 'nohemi-thin';
   font-weight: 100;
-  font-size: 1.2rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
