@@ -67,4 +67,29 @@ footer {
   font-size: clamp(0.9rem, 2vmin, 8rem);
   margin-left: clamp(0.7rem, 1.7vmin, 0.5rem);
 }
+
+@media (min-width: 500px) and (min-height: 500px) {
+  .burger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: clamp(0.8rem, 3.5vmin, 2rem);
+    aspect-ratio: 1/1;
+    cursor: pointer;
+    margin: clamp(0.5rem, 1.2vmin, 2rem);
+  }
+
+  .horizontal-line {
+    height: clamp(1px, 0.3vmin, 2px);
+    width: 100%;
+    background-color: white;
+    border-radius: 1px;
+  }
+
+  .vertical-line {
+    height: clamp(1.5rem, 4vmin, 3rem);
+    width: 1px;
+    background-color: white;
+  }
+}
 </style>
