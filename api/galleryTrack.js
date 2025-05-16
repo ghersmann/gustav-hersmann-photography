@@ -12,10 +12,11 @@ export default async function handler(req, res) {
     }
 
     const images = await sql`
-      SELECT images.* FROM images
-      JOIN galleries ON images.gallery_id = galleries.id
-      WHERE galleries.slug = ${gallerySlug} AND galleries.visible = true
-    `
+    SELECT images.* FROM images
+    JOIN galleries ON images.gallery_id = galleries.id
+    WHERE galleries.slug = ${gallerySlug}
+  `
+
     res.status(200).json(images)
   } catch (error) {
     console.error('Database error:', error)

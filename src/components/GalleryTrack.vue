@@ -28,71 +28,68 @@ export default {
     GallerySection,
     LightBox
   },
+
   data() {
     return {
       lightboxActive: false,
       currentImage: null,
       state: useImageStore(),
-      openGalleries: new Set()
+      openGallerySlug: null
     }
   },
+
   async created() {
     await this.state.fetchGalleries()
 
     const firstGallerySlug = this.state.galleries[0]?.slug
     if (firstGallerySlug) {
-      this.openGalleries.add(firstGallerySlug)
       await this.state.fetchImagesForGallery(firstGallerySlug)
+      this.openGallerySlug = firstGallerySlug
     }
-
-    this.state.galleries.forEach((gallery) => {
-      if (gallery.visible && gallery.slug !== firstGallerySlug) {
-        this.openGalleries.add(gallery.slug)
-      }
-    })
+    this.preloadRemainingGalleries(firstGallerySlug)
   },
+
   methods: {
     openLightbox(image) {
       this.currentImage = image
       this.lightboxActive = true
     },
+
     closeLightbox() {
       this.lightboxActive = false
       this.currentImage = null
     },
-    async toggleGallery(slug) {
-      const isOpen = this.openGalleries.has(slug)
-      const newVisibility = !isOpen
 
-      if (newVisibility) {
-        await fetch('/api/update-gallery', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ slug, visible: true })
-        })
+    async preloadRemainingGalleries(excludeSlug) {
+      const slugsToPreload = this.state.galleries
+        .map((g) => g.slug)
+        .filter((slug) => slug !== excludeSlug)
 
-        this.openGalleries.add(slug)
-        const gallery = this.state.galleries.find((g) => g.slug === slug)
-        if (gallery) gallery.visible = true
-
+      for (const slug of slugsToPreload) {
         if (!this.state.images[slug]?.length) {
           await this.state.fetchImagesForGallery(slug)
         }
-      } else {
-        this.openGalleries.delete(slug)
-
-        await fetch('/api/update-gallery', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ slug, visible: false })
-        })
-
-        const gallery = this.state.galleries.find((g) => g.slug === slug)
-        if (gallery) gallery.visible = false
       }
     },
+
+    async toggleGallery(slug) {
+      console.log('toggleGAllery', slug)
+      const isCurrentlyOpen = this.openGallerySlug === slug
+
+      if (isCurrentlyOpen) {
+        console.log('if isCurrentlyOpen', slug)
+        this.openGallerySlug = null
+      } else {
+        console.log('state.fetchImages called from gallerytrack')
+        if (!this.state.images[slug]?.length) {
+          await this.state.fetchImagesForGallery(slug)
+        }
+        this.openGallerySlug = slug
+      }
+    },
+
     isOpen(slug) {
-      return this.openGalleries.has(slug)
+      return this.openGallerySlug === slug
     }
   }
 }
