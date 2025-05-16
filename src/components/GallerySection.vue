@@ -7,14 +7,17 @@
       </span>
     </h2>
 
-    <div v-if="isOpen" class="gallery-track">
-      <ThumbNail
-        v-for="img in images"
-        :key="img.id"
-        :img="img"
-        :base-url="state.imageBaseUrl"
-        @click-image="$emit('open-lightbox', img)"
-      />
+    <div v-if="isOpen">
+      <div v-if="!images?.length" class="gallery-title loading-msg">Loading…</div>
+      <div v-else class="gallery-track">
+        <ThumbNail
+          v-for="img in images"
+          :key="img.id"
+          :img="img"
+          :base-url="state.imageBaseUrl"
+          @click-image="$emit('open-lightbox', img)"
+        />
+      </div>
     </div>
   </article>
 </template>
@@ -50,6 +53,10 @@ export default {
   align-items: baseline;
   gap: 0.5rem;
   overflow: hidden;
+}
+
+.loading-msg {
+  font-size: clamp(0.9rem, 2vmax, 1rem);
 }
 
 /* Chevron indicator*/

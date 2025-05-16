@@ -17,10 +17,12 @@ export const useImageStore = defineStore('images', {
       }
     },
     async fetchImagesForGallery(gallerySlug) {
+      console.log('state.fetchImges started')
       if (!gallerySlug) return
       try {
         const response = await fetch(`/api/galleryTrack?gallerySlug=${gallerySlug}`)
         this.images[gallerySlug] = await response.json()
+        console.log('fetchImages galleryslug', this.images)
       } catch (error) {
         console.error(`Error fetching images for ${gallerySlug}:`, error)
       }
